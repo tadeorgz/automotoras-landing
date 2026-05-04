@@ -17,6 +17,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 function LandingPage() {
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Todas')
+  const [selectedBrand, setSelectedBrand] = useState('Todas')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
 
@@ -39,18 +40,26 @@ function LandingPage() {
     [],
   )
 
+  const brands = useMemo(
+    () => ['Todas', ...new Set(courses.map((course) => course.marca))],
+    [],
+  )
+
   const filteredProducts = useMemo(() => {
     return courses.filter((course) => {
       const query = search.toLowerCase().trim()
       const matchBySearch =
         course.nombre.toLowerCase().includes(query) ||
-        course.descripcion.toLowerCase().includes(query) ||
-        course.zona.toLowerCase().includes(query) ||
+        course.marca.toLowerCase().includes(query) ||
+        course.modelo.toLowerCase().includes(query) ||
+        String(course.anio).includes(query) ||
+        // course.descripcion.toLowerCase().includes(query) ||
         course.tipo.toLowerCase().includes(query)
       const matchByCategory = selectedCategory === 'Todas' || course.tipo === selectedCategory
-      return matchBySearch && matchByCategory
+      const matchByBrand = selectedBrand === 'Todas' || course.marca === selectedBrand
+      return matchBySearch && matchByCategory && matchByBrand
     })
-  }, [search, selectedCategory])
+  }, [search, selectedCategory, selectedBrand])
 
   const handleSearchChange = (value) => {
     setSearch(value)
@@ -58,6 +67,10 @@ function LandingPage() {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category)
+  }
+
+  const handleBrandChange = (brand) => {
+    setSelectedBrand(brand)
   }
 
   const ctaHref = createWhatsAppLink(siteConfig.whatsappNumber, siteConfig.ctaMessage)
@@ -104,6 +117,7 @@ function LandingPage() {
         onClick={() => {
           setSearch('')
           setSelectedCategory('Todas')
+          setSelectedBrand('Todas')
         }}
         className="mt-4 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100"
       >
@@ -138,6 +152,9 @@ function LandingPage() {
                 categories={categories}
                 selectedCategory={selectedCategory}
                 onCategoryChange={handleCategoryChange}
+                brands={brands}
+                selectedBrand={selectedBrand}
+                onBrandChange={handleBrandChange}
               />
               <section className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
                 {filteredProducts.length === 0 ? (
@@ -150,17 +167,19 @@ function LandingPage() {
                     variant="grid"
                   />
                 )}
-                <div className="mt-8 flex justify-center">
+                <div className="mt-8 flex flex-col items-center gap-3">
                   <Link
                     to="/#Autos"
                     onClick={() => {
                       setSearch('')
                       setSelectedCategory('Todas')
+                      setSelectedBrand('Todas')
                     }}
                     className="mx-auto inline-block rounded-lg bg-[var(--brand-color)] px-4 py-2 text-sm font-medium text-white shadow transition transform hover:scale-105 hover:bg-[var(--brand-dark-color)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--brand-color)]"
                   >
                     Volver al inicio
                   </Link>
+                  <p className='text-sm text-slate-500'> Vuelve al inicio para saber mas sobre nosotros</p>
                 </div>
               </section>
             </div>
@@ -184,6 +203,9 @@ function LandingPage() {
                 categories={categories}
                 selectedCategory={selectedCategory}
                 onCategoryChange={handleCategoryChange}
+                brands={brands}
+                selectedBrand={selectedBrand}
+                onBrandChange={handleBrandChange}
               />
               {filteredProducts.length === 0 ? (
                 <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">{emptyState}</div>

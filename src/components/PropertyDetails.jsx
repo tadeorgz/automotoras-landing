@@ -36,6 +36,7 @@ export default function PropertyDetails() {
                 >
                     Volver al inicio
                 </button>
+                <p> Vuelve al inicio para saber mas sobre nosotros</p>
             </div>
         )
     }

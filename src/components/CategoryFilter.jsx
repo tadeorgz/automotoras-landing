@@ -6,6 +6,9 @@ function CategoryFilter({
   categories,
   selectedCategory,
   onCategoryChange,
+  brands,
+  selectedBrand,
+  onBrandChange,
 }) {
   return (
     <section id="Autos" className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -13,7 +16,7 @@ function CategoryFilter({
       <div className="mb-6">
         <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-color)]">Vehículos disponibles</p>
         <h2 className="text-2xl font-black text-[var(--text-color)] sm:text-3xl">Encontrá tu próximo auto</h2>
-        <p className="mt-2 text-sm text-stone-700">Filtrá por tipo, año o buscá marca y modelo.</p>
+        <p className="mt-2 text-sm text-stone-700">Filtrá por tipo, marca o buscá por modelo y año.</p>
       </div>
 
       <div className="rounded-2xl border border-[var(--brand-color)]/15 bg-white p-4 shadow-sm sm:p-5">
@@ -46,7 +49,7 @@ function CategoryFilter({
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 whitespace-nowrap">
               <SlidersHorizontal size={12} />
-              Filtrar por:
+              Tipo:
             </span>
             {categories.map((category) => {
               const isActive = selectedCategory === category
@@ -61,6 +64,29 @@ function CategoryFilter({
                     }`}
                 >
                   {category}
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+              <SlidersHorizontal size={12} />
+              Marca:
+            </span>
+            {brands.map((brand) => {
+              const isActive = selectedBrand === brand
+              return (
+                <button
+                  key={brand}
+                  type="button"
+                  onClick={() => onBrandChange(brand)}
+                  className={`rounded-xl px-3 py-1.5 text-xs sm:px-4 sm:py-2 font-semibold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-color)]/50 focus-visible:ring-offset-2 ${isActive
+                    ? 'bg-[var(--brand-color)] text-white shadow-md shadow-[var(--brand-color)]/30 scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:-translate-y-0.5 hover:bg-[var(--brand-color)]/10 hover:text-slate-900'
+                    }`}
+                >
+                  {brand}
                 </button>
               )
             })}
