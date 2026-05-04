@@ -65,7 +65,7 @@ export default function PropertyDetails() {
                     <Link
 
                         className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-[var(--brand-color)]"
-                        to="/#propiedades"
+                        to="/#Autos"
                     >
                         <ArrowLeft size={18} />
                         Volver al catálogo
@@ -178,7 +178,7 @@ export default function PropertyDetails() {
                     </div>
                 </div>
 
-                {/* Propiedades Similares */}
+                {/* Autos Similares */}
                 {similarProperties.length > 0 && (
                     <div className="mt-16 pt-8 border-t border-slate-200">
                         <h2 className="mb-6 text-xl font-bold text-slate-800">Vehículos Similares</h2>

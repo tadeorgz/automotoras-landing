@@ -8,7 +8,7 @@ function CategoryFilter({
   onCategoryChange,
 }) {
   return (
-    <section id="propiedades" className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <section id="Autos" className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Section header */}
       <div className="mb-6">
         <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-color)]">Vehículos disponibles</p>

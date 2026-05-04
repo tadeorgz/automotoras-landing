@@ -20,16 +20,16 @@ function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
 
-  const isPropertiesPage = location.pathname === '/propiedades'
+  const isPropertiesPage = location.pathname === '/Autos'
 
   const navLinks = isPropertiesPage
     ? [
-      { label: 'Volver al inicio', href: '/#propiedades' },
+      { label: 'Volver al inicio', href: '/#Autos' },
       { label: 'Contacto', href: '#contacto' },
     ]
     : [
       { label: 'Inicio', href: '#inicio' },
-      { label: 'Vehículos', href: '#propiedades' },
+      { label: 'Vehículos', href: '#Autos' },
       { label: 'Nosotros', href: '#nosotros' },
       { label: 'Contacto', href: '#contacto' },
     ]
@@ -152,7 +152,7 @@ function LandingPage() {
                 )}
                 <div className="mt-8 flex justify-center">
                   <Link
-                    to="/#propiedades"
+                    to="/#Autos"
                     onClick={() => {
                       setSearch('')
                       setSelectedCategory('Todas')
@@ -177,7 +177,7 @@ function LandingPage() {
               backgroundImage={siteConfig.heroBackgroundImage}
             />
 
-            <section id="propiedades" className="pb-16 relative overflow-hidden bg-[var(--bg-soft-color)]" > {/* style={{ backgroundImage: "radial-gradient(circle at 10% 20%, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.14) 12%, transparent 35%), radial-gradient(circle at 90% 80%, rgba(45, 12, 234, 0.1) 0%, rgba(12, 153, 234, 0.1) 18%, transparent 45%), linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(249, 249, 251, 0.6))" }}  */}
+            <section id="Autos" className="pb-16 relative overflow-hidden bg-[var(--bg-soft-color)]" > {/* style={{ backgroundImage: "radial-gradient(circle at 10% 20%, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.14) 12%, transparent 35%), radial-gradient(circle at 90% 80%, rgba(45, 12, 234, 0.1) 0%, rgba(12, 153, 234, 0.1) 18%, transparent 45%), linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(249, 249, 251, 0.6))" }}  */}
               <CategoryFilter
                 search={search}
                 onSearchChange={handleSearchChange}
@@ -193,7 +193,7 @@ function LandingPage() {
                   companyName={siteConfig.companyName}
                   whatsappNumber={siteConfig.whatsappNumber}
                   variant="carousel"
-                  viewAllHref="/propiedades"
+                  viewAllHref="/Autos"
                   viewAllLabel="Ver todos los vehículos"
                 />
               )}
@@ -235,7 +235,7 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/propiedades" element={<LandingPage />} />
+        <Route path="/Autos" element={<LandingPage />} />
         <Route path="/propiedad/:id" element={<PropertyDetails />} />
         <Route path="*" element={<LandingPage />} />
       </Routes>

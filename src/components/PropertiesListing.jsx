@@ -8,7 +8,7 @@ function PropertiesListing({
     companyName,
     whatsappNumber,
     variant = 'carousel',
-    viewAllHref = '/propiedades',
+    viewAllHref = '/Autos',
     viewAllLabel = 'Ver todos los vehículos',
 }) {
     const carouselRef = useRef(null)
