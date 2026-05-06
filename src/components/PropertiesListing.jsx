@@ -3,14 +3,15 @@ import { ChevronLeft, ChevronRight, Building2, LayoutGrid } from 'lucide-react'
 import ProductCard from './ProductCard'
 import { createVehicleInquiryMessage, createWhatsAppLink } from '../utils/whatsapp'
 import WhatsAppButton from './WhatsAppButton'
+import { Link } from 'react-router-dom'
 
 function PropertiesListing({
     properties,
     companyName,
     whatsappNumber,
     variant = 'carousel',
-    viewAllHref = '/Autos',
-    viewAllLabel = 'Ver todos los vehículos',
+    // viewAllHref = '/Autos',
+    // viewAllLabel = 'Ver todos los vehículos',
 }) {
     const carouselRef = useRef(null)
     const isCarousel = variant === 'carousel'
@@ -26,7 +27,7 @@ function PropertiesListing({
     }
 
     return (
-        <section className="mx-auto  px-4 py-8 sm:px-6 lg:px-8 ">
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 ">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <p className="mb-1 inline-flex items-center gap-2 rounded-full border border-[var(--brand-color)]/20 bg-[var(--brand-color)]/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-color)]">
@@ -96,13 +97,12 @@ function PropertiesListing({
 
             {isCarousel && (
                 <div className="mt-8 flex flex-col items-center gap-3">
-                    <WhatsAppButton
-                        href={viewAllHref}
-                        className="inline-flex items-center justify-center rounded-xl bg-[var(--brand-color)] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all md:hover:-translate-y-0.5 md:hover:bg-[var(--brand-dark-color)] md:hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-color)]/50 focus-visible:ring-offset-2"
+                    <Link
+                        to="/Autos#inicio"
+                        className="mx-auto inline-block rounded-lg bg-[var(--brand-color)] px-4 py-2 text-sm font-medium text-white shadow transition transform hover:scale-105 hover:bg-[var(--brand-dark-color)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--brand-color)]"
                     >
-                        {viewAllLabel}
-                    </WhatsAppButton>
-                    <p className="text-sm text-slate-500">Podés ver más detalles en la página completa de vehículos.</p>
+                        Ver todos los vehículos
+                    </Link>
                 </div>
             )}
         </section>
