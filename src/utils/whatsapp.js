@@ -14,7 +14,7 @@ export function createCategoryInquiryMessage(companyName, categoryName) {
 }
 
 export function createVehicleInquiryMessage(companyName, vehicleName) {
-    return `Hola ${companyName}, me interesa el vehículo: ${vehicleName}. Quisiera saber precio final, kilometraje, estado y si está disponible.`
+    return `Hola ${companyName}, me interesa el vehículo: ${vehicleName}. Quisiera saber detalles, ubicación y agendar una visita.`
 }
 
 export function createGeneralInquiryMessage(companyName) {

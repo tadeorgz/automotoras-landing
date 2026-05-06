@@ -86,7 +86,7 @@ function ProductCard({ product, whatsappHref }) {
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:gap-3 mt-1 pointer-events-auto">
-          <WhatsAppButton href={whatsappHref} label="Consultar" className="w-full flex-1 text-xs sm:text-sm" />
+          <WhatsAppButton href={whatsappHref} label="Agendar visita" className="w-full flex-1 text-xs sm:text-sm" />
         </div>
       </div>
     </article>

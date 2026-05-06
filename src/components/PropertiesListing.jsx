@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { ChevronLeft, ChevronRight, Building2, LayoutGrid } from 'lucide-react'
 import ProductCard from './ProductCard'
 import { createVehicleInquiryMessage, createWhatsAppLink } from '../utils/whatsapp'
+import WhatsAppButton from './WhatsAppButton'
 
 function PropertiesListing({
     properties,
@@ -25,7 +26,7 @@ function PropertiesListing({
     }
 
     return (
-        <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 ">
+        <section className="mx-auto  px-4 py-8 sm:px-6 lg:px-8 ">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <p className="mb-1 inline-flex items-center gap-2 rounded-full border border-[var(--brand-color)]/20 bg-[var(--brand-color)]/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-color)]">
@@ -69,7 +70,7 @@ function PropertiesListing({
             {isCarousel ? (
                 <div
                     ref={carouselRef}
-                    className="flex ] gap-5 overflow-x-auto scroll-smooth pb-4 pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex gap-5 overflow-x-auto scroll-smooth pb-4 pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
                     {properties.map((property) => {
                         const inquiryMessage = createVehicleInquiryMessage(companyName, property.nombre)
@@ -95,12 +96,12 @@ function PropertiesListing({
 
             {isCarousel && (
                 <div className="mt-8 flex flex-col items-center gap-3">
-                    <a
+                    <WhatsAppButton
                         href={viewAllHref}
                         className="inline-flex items-center justify-center rounded-xl bg-[var(--brand-color)] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all md:hover:-translate-y-0.5 md:hover:bg-[var(--brand-dark-color)] md:hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-color)]/50 focus-visible:ring-offset-2"
                     >
                         {viewAllLabel}
-                    </a>
+                    </WhatsAppButton>
                     <p className="text-sm text-slate-500">Podés ver más detalles en la página completa de vehículos.</p>
                 </div>
             )}
